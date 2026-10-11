@@ -80,8 +80,8 @@ jobs:
                 ("docker pull " + $image),
                 "docker stop harbour-books || true",
                 "docker rm harbour-books || true",
-                ("docker run -d --name harbour-books --restart unless-stopped -p 8000:8000 " + $image),
-                "for i in $(seq 1 30); do if curl -fsS http://localhost:8000/health; then exit 0; fi; sleep 2; done; exit 1"
+                ("docker run -d --name harbour-books --restart unless-stopped -p 80:8000 " + $image),
+                "for i in $(seq 1 30); do if curl -fsS http://localhost:80/health; then exit 0; fi; sleep 2; done; exit 1"
               ]
             }')" \
             --query "Command.CommandId" \
